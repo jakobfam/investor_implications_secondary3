@@ -1,0 +1,272 @@
+{{ block title }}
+    Zahlungsbereitschaft – Impact-Fonds
+{{ endblock }}
+
+{{ block styles }}
+<style>
+    .wtp-container {
+        max-width: 760px;
+        margin: 0 auto;
+    }
+
+    /* ── Intro ──────────────────────────────────────────── */
+    .wtp-intro {
+        background: #f5f7fa;
+        border-left: 4px solid #1565c0;
+        border-radius: 6px;
+        padding: 20px 24px;
+        line-height: 1.75;
+        color: #333;
+        margin-bottom: 28px;
+    }
+    .wtp-intro p { margin: 0 0 12px 0; }
+    .wtp-intro p:last-child { margin-bottom: 0; }
+
+    /* ── Impact fund card ───────────────────────────────── */
+    .impact-card {
+        border: 2px solid #2e7d32;
+        border-radius: 10px;
+        background: #fff;
+        margin-bottom: 28px;
+        overflow: hidden;
+    }
+    .impact-card-header {
+        background: #2e7d32;
+        color: #fff;
+        padding: 14px 20px;
+        font-weight: 700;
+        font-size: 1.05em;
+        text-align: center;
+    }
+    .impact-card-body {
+        padding: 20px 24px;
+    }
+    .impact-card-name {
+        font-weight: 700;
+        font-size: 1em;
+        color: #333;
+        margin-bottom: 10px;
+    }
+    .impact-card-desc {
+        font-size: 0.93em;
+        line-height: 1.7;
+        color: #555;
+        margin-bottom: 16px;
+    }
+    .impact-details {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 0;
+    }
+    .impact-detail-item {
+        background: #f5f5f5;
+        border-radius: 6px;
+        padding: 10px 14px;
+        text-align: center;
+    }
+    .impact-detail-label {
+        font-size: 0.8em;
+        font-weight: 600;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 4px;
+    }
+    .impact-detail-value {
+        font-size: 0.95em;
+        font-weight: 600;
+        color: #333;
+    }
+
+    /* ── WTP question ───────────────────────────────────── */
+    .wtp-question {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 24px;
+        margin-bottom: 24px;
+    }
+    .wtp-question-text {
+        font-weight: 600;
+        font-size: 1.02em;
+        color: #222;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    /* ── Slider ──────────────────────────────────────────── */
+    .wtp-slider-wrap {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    .wtp-slider {
+        width: 100%;
+        margin: 8px 0;
+        -webkit-appearance: none;
+        appearance: none;
+        height: 8px;
+        border-radius: 4px;
+        background: linear-gradient(to right, #e8f5e9, #2e7d32);
+        outline: none;
+    }
+    .wtp-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: #2e7d32;
+        cursor: pointer;
+        border: 3px solid #fff;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .wtp-slider::-moz-range-thumb {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: #2e7d32;
+        cursor: pointer;
+        border: 3px solid #fff;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .wtp-scale {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.82em;
+        color: #888;
+        margin-top: 2px;
+    }
+    .wtp-value-display {
+        text-align: center;
+        margin-top: 16px;
+        font-size: 1.3em;
+        font-weight: 700;
+        color: #2e7d32;
+    }
+    .wtp-value-display .unit {
+        font-size: 0.75em;
+        font-weight: 500;
+        color: #666;
+    }
+
+    /* ── Explanation note ────────────────────────────────── */
+    .wtp-note {
+        margin-top: 16px;
+        padding: 12px 16px;
+        background: #fafafa;
+        border-radius: 6px;
+        font-size: 0.86em;
+        line-height: 1.6;
+        color: #666;
+    }
+</style>
+{{ endblock }}
+
+{{ block content }}
+<div class="wtp-container">
+
+    <!-- ── Intro ──────────────────────────────────────────── -->
+    <div class="wtp-intro">
+        <p>
+            Stellen Sie sich nun vor, es gäbe einen zusätzlichen Fonds,
+            der neben der Marktrendite auch einen messbaren ökologischen
+            Beitrag leistet.
+        </p>
+        <p>
+            Dieser Fonds würde – ähnlich wie die bisherigen Fonds – die
+            Entwicklung des MSCI World abbilden. Zusätzlich fließt
+            <strong>1&nbsp;% des investierten Kapitals</strong> in den Erwerb
+            von CO₂-Zertifikaten. Dadurch wird an anderer Stelle
+            CO₂-Ausstoß kompensiert – bei <strong>250&nbsp;EUR monatlich</strong>
+            werden so ca. <strong>100&nbsp;kg CO₂ pro Jahr</strong> eingespart.
+        </p>
+    </div>
+
+    <!-- ── Impact fund card ──────────────────────────────── -->
+    <div class="impact-card">
+        <div class="impact-card-header">Hypothetischer Impact-Fonds</div>
+        <div class="impact-card-body">
+            <div class="impact-card-name">{{ impact_fund.name }}</div>
+            <div class="impact-card-desc">{{ impact_fund.desc }}</div>
+            <div class="impact-details">
+                <div class="impact-detail-item">
+                    <div class="impact-detail-label">SFDR</div>
+                    <div class="impact-detail-value">{{ impact_fund.sfdr }}</div>
+                </div>
+                <div class="impact-detail-item">
+                    <div class="impact-detail-label">Basis-TER</div>
+                    <div class="impact-detail-value">{{ impact_fund.ter_base }}</div>
+                </div>
+                <div class="impact-detail-item">
+                    <div class="impact-detail-label">Ø Rendite (5J, vor Kosten)</div>
+                    <div class="impact-detail-value">{{ impact_fund.ret }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── WTP question ──────────────────────────────────── -->
+    <div class="wtp-question">
+        <div class="wtp-question-text">
+            Die Basis-Kosten dieses Fonds betragen 0,25&nbsp;% p.a. – genau wie
+            bei den anderen Fonds. Durch die Investition von 1&nbsp;% des Kapitals
+            in CO₂-Zertifikate (ca. 100&nbsp;kg CO₂ pro Jahr bei
+            <strong>250&nbsp;EUR monatlich</strong>) entstehen Mehrkosten von
+            1,00&nbsp;% p.a., die als TER-Aufschlag an Sie weitergegeben werden.
+            <br><br>
+            <strong>Wie hoch dürfte dieser zusätzliche Kostenaufschlag
+            (TER-Aufschlag) maximal sein, damit Sie bereit wären, in
+            diesen Impact-Fonds zu investieren?</strong>
+        </div>
+
+        <div class="wtp-slider-wrap">
+            <input type="range" class="wtp-slider" id="wtp-slider"
+                   min="0" max="5" step="0.05" value="0">
+            <div class="wtp-scale">
+                <span>0,00 %</span>
+                <span>1,00 %</span>
+                <span>2,00 %</span>
+                <span>3,00 %</span>
+                <span>4,00 %</span>
+                <span>5,00 %</span>
+            </div>
+            <div class="wtp-value-display">
+                + <span id="wtp-val">0,00</span> <span class="unit">% p.a. zusätzliche Kosten</span>
+            </div>
+        </div>
+
+        <div class="wtp-note">
+            <strong>Beispiel:</strong> Bei einem Aufschlag von 1,00 % würden
+            die Gesamtkosten des Fonds 1,25 % p.a. betragen
+            (0,25 % Basis + 1,00 % Aufschlag). Bei einer Bruttorendite von
+            10,41 % bliebe Ihnen eine Nettorendite von 9,16 %.
+        </div>
+    </div>
+
+    <!-- Hidden oTree form field -->
+    <input type="hidden" name="wtp_impact_ter" id="id_wtp_impact_ter" value="0">
+
+    {{ next_button }}
+
+</div>
+{{ endblock }}
+
+{{ block scripts }}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var slider = document.getElementById('wtp-slider');
+        var display = document.getElementById('wtp-val');
+        var hidden = document.getElementById('id_wtp_impact_ter');
+
+        function updateDisplay() {
+            var val = parseFloat(slider.value);
+            display.textContent = val.toFixed(2).replace('.', ',');
+            hidden.value = val;
+        }
+
+        slider.addEventListener('input', updateDisplay);
+        updateDisplay();
+    });
+</script>
+{{ endblock }}
