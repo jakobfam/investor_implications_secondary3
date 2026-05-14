@@ -2,6 +2,58 @@
     CO&#8322;-Einsparung
 {{ endblock }}
 
+{{ block styles }}
+<style>
+    /* ── Blank slider until first interaction ─────────────────── */
+    #co2_slider {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 6px;
+        border-radius: 3px;
+        background: #d8d8d8;       /* neutral, no fill */
+        outline: none;
+        cursor: pointer;
+    }
+    /* Thumb hidden initially (zero-sized, transparent) */
+    #co2_slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 0;
+        height: 0;
+        background: transparent;
+        border: none;
+    }
+    #co2_slider::-moz-range-thumb {
+        width: 0;
+        height: 0;
+        background: transparent;
+        border: none;
+    }
+    /* Thumb appears only after the user has clicked / dragged */
+    #co2_slider.touched::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: #1565c0;
+        border: 3px solid #fff;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+        cursor: pointer;
+    }
+    #co2_slider.touched::-moz-range-thumb {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: #1565c0;
+        border: 3px solid #fff;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+        cursor: pointer;
+    }
+</style>
+{{ endblock }}
+
 {{ block content }}
 
 <p>
@@ -37,7 +89,6 @@
         max="200"
         step="1"
         value="100"
-        style="width:100%; opacity:0.45;"
     >
     <input type="hidden" name="co2_reduction_pct" id="id_co2_reduction_pct" value="">
 
@@ -70,7 +121,7 @@
         var display = document.getElementById('sliderValue');
 
         function activate() {
-            slider.style.opacity = '1';
+            slider.classList.add('touched');
             display.innerHTML = '<strong>' + slider.value + '&nbsp;%</strong>';
             hidden.value = slider.value;
         }
