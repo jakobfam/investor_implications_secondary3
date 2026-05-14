@@ -107,10 +107,27 @@
         appearance: none;
         height: 8px;
         border-radius: 4px;
-        background: linear-gradient(to right, #e8f5e9, #2e7d32);
+        background: #d8d8d8;       /* uniform grey track until touched */
         outline: none;
+        cursor: pointer;
     }
+    /* Thumb hidden initially */
     .wtp-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 0;
+        height: 0;
+        background: transparent;
+        border: none;
+    }
+    .wtp-slider::-moz-range-thumb {
+        width: 0;
+        height: 0;
+        background: transparent;
+        border: none;
+    }
+    /* Visible thumb after the user has clicked / dragged */
+    .wtp-slider.touched::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
         width: 24px;
@@ -121,7 +138,7 @@
         border: 3px solid #fff;
         box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
-    .wtp-slider::-moz-range-thumb {
+    .wtp-slider.touched::-moz-range-thumb {
         width: 24px;
         height: 24px;
         border-radius: 50%;
@@ -222,7 +239,7 @@
 
         <div class="wtp-slider-wrap">
             <input type="range" class="wtp-slider" id="wtp-slider"
-                   min="0" max="5" step="0.05" value="2.5" style="opacity:0.45;">
+                   min="0" max="5" step="0.05" value="2.5">
             <div class="wtp-scale">
                 <span>0,00 %</span>
                 <span>1,00 %</span>
@@ -260,8 +277,14 @@
         var hidden = document.getElementById('id_wtp_impact_ter');
 
         function activate() {
-            slider.style.opacity = '1';
+            slider.classList.add('touched');
             var val = parseFloat(slider.value);
+            var min = parseFloat(slider.min);
+            var max = parseFloat(slider.max);
+            var pct = ((val - min) / (max - min)) * 100;
+            slider.style.background =
+                'linear-gradient(to right, #2e7d32 0%, #2e7d32 ' + pct + '%,' +
+                ' #d8d8d8 ' + pct + '%, #d8d8d8 100%)';
             display.style.color = '';
             display.style.fontSize = '';
             display.style.fontWeight = '';

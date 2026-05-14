@@ -122,6 +122,13 @@
 
         function activate() {
             slider.classList.add('touched');
+            var v = parseFloat(slider.value);
+            var min = parseFloat(slider.min);
+            var max = parseFloat(slider.max);
+            var pct = ((v - min) / (max - min)) * 100;
+            slider.style.background =
+                'linear-gradient(to right, #1565c0 0%, #1565c0 ' + pct + '%,' +
+                ' #d8d8d8 ' + pct + '%, #d8d8d8 100%)';
             display.innerHTML = '<strong>' + slider.value + '&nbsp;%</strong>';
             hidden.value = slider.value;
         }

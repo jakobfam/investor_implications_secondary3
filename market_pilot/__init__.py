@@ -272,7 +272,7 @@ class Player(BasePlayer):
     # ── Attention checks ─────────────────────────────────────────────────
     attention = models.BooleanField(default=True)
     attention_check_1 = models.IntegerField(
-        label='Aufmerksamkeitsfrage – bitte wählen Sie hier die Antwort „4" aus.',
+        label='Für die Auswertung dieser Studie ist es wichtig, dass die Teilnehmenden die Aussagen aufmerksam lesen. Bitte wählen Sie hier die Antwort „4" aus.',
         choices=[1, 2, 3, 4, 5],
         widget=widgets.RadioSelect
     )
@@ -583,7 +583,7 @@ ATTITUDE_ITEM_DEFS = {
 # Instructed-response attention check (correct = 4). Spliced into the Likert
 # table at a fixed mid-list position so the substantive-item shuffle doesn't
 # drop it at row 1 (priming) or row 8 (too late to catch breezers).
-ATTENTION_ITEM_TEXT = 'Aufmerksamkeitsfrage – bitte wählen Sie hier die Antwort „4" aus.'
+ATTENTION_ITEM_TEXT = 'Für die Auswertung dieser Studie ist es wichtig, dass die Teilnehmenden die Aussagen aufmerksam lesen. Bitte wählen Sie hier die Antwort „4" aus.'
 ATTENTION_ITEM_POSITION = 3  # 0-indexed → row 4 of 8
 
 
