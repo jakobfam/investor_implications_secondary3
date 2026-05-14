@@ -272,8 +272,8 @@ class Player(BasePlayer):
     # ── Attention checks ─────────────────────────────────────────────────
     attention = models.BooleanField(default=True)
     attention_check_1 = models.IntegerField(
-        label='Diese Frage testet Ihre Aufmerksamkeit. Bitte wählen Sie die Antwort "FAZ" aus. Von welchem Medium beziehen Sie Ihre Nachrichten?',
-        choices=[[1, 'Bild'], [2, 'FAZ'], [3, 'Zeit'], [4, 'Focus'], [5, 'Andere']],
+        label='Aufmerksamkeitsfrage – bitte wählen Sie hier die Antwort „4" aus.',
+        choices=[1, 2, 3, 4, 5],
         widget=widgets.RadioSelect
     )
     attention_check_2 = models.IntegerField(
@@ -346,7 +346,11 @@ def is_treatment1(player: Player):
 
 
 def check_attention(player: Player):
-    if player.attention_check_1 != 2 and player.attention_check_2 != 5:
+    # Same lenient semantics as before: fails only if BOTH checks are wrong.
+    # attention_check_1 is the instructed-response Likert item on
+    # InvestorAttitudes (correct = 4); attention_check_2 is the
+    # Atlantic-swimming item on Feedback (correct = 5).
+    if player.attention_check_1 != 4 and player.attention_check_2 != 5:
         player.attention = False
 
 
@@ -395,7 +399,7 @@ class Welcome(Page):
 class DemographicsIntro(Page):
     form_model = 'player'
     form_fields = ['age', 'gender', 'highest_education', 'occupation',
-                   'hh_income', 'attention_check_1']
+                   'hh_income']
 
     @staticmethod
     def is_displayed(player: Player):
@@ -563,6 +567,7 @@ INV_SCENARIO_FIELDS = [
 ATTITUDE_FIELDS = [
     'att_consensus_price', 'att_beat_consensus', 'att_diversification',
     'att_market_premium', 'att_costs', 'att_savings_plan', 'att_drawdown',
+    'attention_check_1',
 ]
 
 ATTITUDE_ITEM_DEFS = {
@@ -574,6 +579,12 @@ ATTITUDE_ITEM_DEFS = {
     'att_savings_plan': 'Es ist klüger, regelmäßig (z. B. monatlich) einen festen Betrag in einen Indexfonds einzuzahlen, als zu versuchen, den richtigen Kauf- oder Verkaufszeitpunkt abzupassen.',
     'att_drawdown': 'Fallende Aktienkurse sind für langfristige Privatanleger eher eine Kaufgelegenheit als ein Grund zur Sorge — man bekommt für den gleichen Betrag mehr Anteile.',
 }
+
+# Instructed-response attention check (correct = 4). Spliced into the Likert
+# table at a fixed mid-list position so the substantive-item shuffle doesn't
+# drop it at row 1 (priming) or row 8 (too late to catch breezers).
+ATTENTION_ITEM_TEXT = 'Aufmerksamkeitsfrage – bitte wählen Sie hier die Antwort „4" aus.'
+ATTENTION_ITEM_POSITION = 3  # 0-indexed → row 4 of 8
 
 
 class InvestorScenario(Page):
@@ -597,6 +608,12 @@ class InvestorAttitudes(Page):
     def vars_for_template(player: Player):
         keys = player.att_item_order.split(',')
         items = [dict(field=k, text=ATTITUDE_ITEM_DEFS[k]) for k in keys]
+        # Splice the instructed-response attention check at a fixed mid-list
+        # position, independent of the random order of substantive items.
+        items.insert(
+            ATTENTION_ITEM_POSITION,
+            dict(field='attention_check_1', text=ATTENTION_ITEM_TEXT),
+        )
         return dict(att_items=items)
 
 

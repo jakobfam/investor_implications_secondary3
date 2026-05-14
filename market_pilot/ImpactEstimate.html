@@ -27,21 +27,19 @@
 
     <p style="margin-bottom:12px;">
         <strong>CO&#8322;-Reduktion:</strong>
-        <span id="sliderValue"><strong>0&nbsp;%</strong></span>
+        <span id="sliderValue"><em style="color:#888;">Bitte einen Wert ausw&auml;hlen</em></span>
     </p>
 
     <input
         type="range"
-        name="co2_reduction_pct"
-        id="co2_reduction_pct"
+        id="co2_slider"
         min="0"
         max="200"
         step="1"
-        value="0"
-        oninput="document.getElementById('sliderValue').innerHTML = '<strong>' + this.value + '&nbsp;%</strong>';"
-        style="width:100%;"
-        required
+        value="100"
+        style="width:100%; opacity:0.45;"
     >
+    <input type="hidden" name="co2_reduction_pct" id="id_co2_reduction_pct" value="">
 
     <div style="
         display:flex;
@@ -64,5 +62,21 @@
 </div>
 
 {{ next_button }}
+
+<script>
+    (function () {
+        var slider = document.getElementById('co2_slider');
+        var hidden = document.getElementById('id_co2_reduction_pct');
+        var display = document.getElementById('sliderValue');
+
+        function activate() {
+            slider.style.opacity = '1';
+            display.innerHTML = '<strong>' + slider.value + '&nbsp;%</strong>';
+            hidden.value = slider.value;
+        }
+
+        slider.addEventListener('input', activate);
+    })();
+</script>
 
 {{ endblock }}
