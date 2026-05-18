@@ -2,7 +2,28 @@
     Nachhaltiges Investment
 {{ endblock }}
 
+{{ block styles }}
+<style>
+    /* Align oTree page title with content container */
+    .otree-title, ._otree_content_area > h2:first-child {
+        max-width: 760px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .impact-container {
+        max-width: 760px;
+        margin: 0 auto;
+    }
+</style>
+{{ endblock }}
+
 {{ block content }}
+<div class="impact-container">
+
+<p style="margin-bottom:16px; line-height:1.7;">
+    Auf den folgenden Seiten stellen wir Ihnen einige Fragen
+    zu Finanzprodukten.
+</p>
 
 <p style="margin-bottom:12px;">
     <strong>Bitte lesen Sie das folgende Szenario aufmerksam durch:</strong>
@@ -17,9 +38,9 @@
 ">
 
     <p style="margin-top:0;">
-        <strong>Person A</strong> legt
-        <strong>10.000&nbsp;EUR</strong>
-        in den Fonds <em>MSCI World ESG Screened Index</em> an.
+        <strong>Person A</strong> kauft an der B&ouml;rse Anteile
+        im Wert von <strong>10.000&nbsp;EUR</strong>
+        am Fonds <em>MSCI World ESG Screened Index</em>.
     </p>
 
     <p>
@@ -47,8 +68,8 @@
     <hr style="border:none; border-top:1px solid #ddd; margin:16px 0;">
 
     <p style="margin-bottom:0;">
-        Alternativ h&auml;tte Person A das Geld auch in den Fonds
-        <em>MSCI World Index</em> investieren k&ouml;nnen.
+        Alternativ h&auml;tte Person A auch Anteile am Fonds
+        <em>MSCI World Index</em> kaufen k&ouml;nnen.
         Dieser Fonds beinhaltet &ndash; im Gegensatz zum
         <em>MSCI World ESG Screened Index</em> &ndash; auch Unternehmen aus
         kontroversen Gesch&auml;ftsfeldern.
@@ -62,4 +83,5 @@
     {{ next_button }}
 </div>
 
+</div>
 {{ endblock }}

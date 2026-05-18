@@ -1,9 +1,15 @@
 {{ block title }}
-    Zahlungsbereitschaft – Impact-Fonds
+    Weiterer Fonds
 {{ endblock }}
 
 {{ block styles }}
 <style>
+    /* Align oTree page title with content container */
+    .otree-title, ._otree_content_area > h2:first-child {
+        max-width: 760px;
+        margin-left: auto;
+        margin-right: auto;
+    }
     .wtp-container {
         max-width: 760px;
         margin: 0 auto;
@@ -186,17 +192,15 @@
     <!-- ── Intro ──────────────────────────────────────────── -->
     <div class="wtp-intro">
         <p>
-            Stellen Sie sich nun vor, es gäbe einen zusätzlichen Fonds,
-            der neben der Marktrendite auch einen messbaren ökologischen
-            Beitrag leistet.
+            Stellen Sie sich nun vor, es g&auml;be den folgenden Fonds.
         </p>
         <p>
-            Dieser Fonds würde – ähnlich wie die bisherigen Fonds – die
-            Entwicklung des MSCI World abbilden. Zusätzlich fließt
-            <strong>1&nbsp;% des investierten Kapitals</strong> in den Erwerb
-            von CO₂-Zertifikaten. Dadurch wird an anderer Stelle
-            CO₂-Ausstoß kompensiert – bei <strong>250&nbsp;EUR monatlich</strong>
-            werden so ca. <strong>100&nbsp;kg CO₂ pro Jahr</strong> eingespart.
+            Dieser Fonds w&uuml;rde &ndash; &auml;hnlich wie die bisherigen Fonds &ndash; die
+            Entwicklung des MSCI World abbilden. Zus&auml;tzlich wird ein Teil
+            des investierten Kapitals in den Erwerb von CO&#8322;-Zertifikaten
+            verwendet. Dadurch wird an anderer Stelle CO&#8322;-Aussto&szlig;
+            kompensiert &ndash; bei <strong>250&nbsp;EUR monatlich</strong>
+            werden so ca. <strong>100&nbsp;kg CO&#8322; pro Jahr</strong> eingespart.
         </p>
     </div>
 
@@ -212,7 +216,7 @@
                     <div class="impact-detail-value">{{ impact_fund.sfdr }}</div>
                 </div>
                 <div class="impact-detail-item">
-                    <div class="impact-detail-label">Basis-TER</div>
+                    <div class="impact-detail-label">Basiskosten</div>
                     <div class="impact-detail-value">{{ impact_fund.ter_base }}</div>
                 </div>
                 <div class="impact-detail-item">
@@ -226,15 +230,15 @@
     <!-- ── WTP question ──────────────────────────────────── -->
     <div class="wtp-question">
         <div class="wtp-question-text">
-            Die Basis-Kosten dieses Fonds betragen 0,25&nbsp;% p.a. – genau wie
-            bei den anderen Fonds. Durch die Investition von 1&nbsp;% des Kapitals
-            in CO₂-Zertifikate (ca. 100&nbsp;kg CO₂ pro Jahr bei
-            <strong>250&nbsp;EUR monatlich</strong>) entstehen Mehrkosten von
-            1,00&nbsp;% p.a., die als TER-Aufschlag an Sie weitergegeben werden.
+            Die Basis-Kosten dieses Fonds betragen 0,25&nbsp;% p.a. &ndash; genau wie
+            bei den anderen Fonds. Durch den zus&auml;tzlichen Erwerb von
+            CO&#8322;-Zertifikaten (ca. 100&nbsp;kg CO&#8322; pro Jahr bei
+            <strong>250&nbsp;EUR monatlich</strong>) entstehen jedoch Mehrkosten,
+            die als j&auml;hrlicher Kostenaufschlag an Sie weitergegeben werden.
             <br><br>
-            <strong>Wie hoch dürfte dieser zusätzliche Kostenaufschlag
-            (TER-Aufschlag) maximal sein, damit Sie bereit wären, in
-            diesen Impact-Fonds zu investieren?</strong>
+            <strong>Wie hoch d&uuml;rfte dieser zus&auml;tzliche j&auml;hrliche
+            Kostenaufschlag maximal sein, damit Sie bereit w&auml;ren, in
+            diesen Fonds zu investieren?</strong>
         </div>
 
         <div class="wtp-slider-wrap">
@@ -254,10 +258,10 @@
         </div>
 
         <div class="wtp-note">
-            <strong>Beispiel:</strong> Bei einem Aufschlag von 1,00 % würden
-            die Gesamtkosten des Fonds 1,25 % p.a. betragen
-            (0,25 % Basis + 1,00 % Aufschlag). Bei einer Bruttorendite von
-            10,41 % bliebe Ihnen eine Nettorendite von 9,16 %.
+            <strong>Beispiel:</strong> Bei einem Aufschlag von 1,00&nbsp;% w&uuml;rden
+            die Gesamtkosten des Fonds 1,25&nbsp;% p.a. betragen
+            (0,25&nbsp;% Basis + 1,00&nbsp;% Aufschlag). Bei einer Bruttorendite von
+            10,41&nbsp;% bliebe Ihnen eine Nettorendite von 9,16&nbsp;%.
         </div>
     </div>
 
@@ -289,7 +293,7 @@
             display.style.fontSize = '';
             display.style.fontWeight = '';
             display.innerHTML = '+ ' + val.toFixed(2).replace('.', ',')
-                + ' <span class="unit">% p.a. zus&auml;tzliche Kosten</span>';
+                + ' <span class="unit">% p.a. zusätzliche jährliche Kosten</span>';
             hidden.value = val;
         }
 

@@ -4,6 +4,12 @@
 
 {{ block styles }}
 <style>
+    /* Align oTree page title with content container */
+    .otree-title, ._otree_content_area > h2:first-child {
+        max-width: 760px;
+        margin-left: auto;
+        margin-right: auto;
+    }
     /* ── Blank slider until first interaction ─────────────────── */
     #co2_slider {
         -webkit-appearance: none;
@@ -55,12 +61,13 @@
 {{ endblock }}
 
 {{ block content }}
+<div style="max-width:760px; margin:0 auto;">
 
 <p>
     Eine durchschnittliche Person in Deutschland verursacht &uuml;ber einen Zeitraum von
     <strong>5 Jahren ca. 50 Tonnen CO&#8322;</strong>.
     Was glauben Sie: Wie viele CO&#8322;-Emissionen werden &uuml;ber die n&auml;chsten 5 Jahre durch
-    ein Investment von <strong>10.000&nbsp;EUR</strong> in den
+    den Kauf von Anteilen im Wert von <strong>10.000&nbsp;EUR</strong> am
     <em>MSCI World ESG Screened</em> eingespart?
 </p>
 
@@ -113,6 +120,8 @@
 </div>
 
 {{ next_button }}
+
+</div>
 
 <script>
     (function () {

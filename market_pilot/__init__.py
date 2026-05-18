@@ -161,7 +161,7 @@ class Player(BasePlayer):
 
     # ── Impact WTP (willingness to pay: additional TER for impact fund) ──
     wtp_impact_ter = models.FloatField(
-        label='Wie viel zusätzliche jährliche Kosten (TER-Aufschlag) wären Sie bereit zu zahlen?',
+        label='Wie hoch dürfte der zusätzliche jährliche Kostenaufschlag maximal sein?',
         min=0,
         max=5,
     )
@@ -191,7 +191,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     att_beat_consensus = models.IntegerField(
-        label='Wer eine einzelne Aktie kauft, wettet im Grunde darauf, das Unternehmen besser einzuschätzen als alle anderen Marktteilnehmer zusammen.',
+        label='Wer eine einzelne Aktie kauft, wettet im Grunde darauf, dass er oder sie das Unternehmen besser einschätzen kann als alle anderen Marktteilnehmer zusammen.',
         choices=[1, 2, 3, 4, 5],
         widget=widgets.RadioSelect,
     )
@@ -513,11 +513,11 @@ IMPACT_FUND_DEF = dict(
     sfdr='Artikel 9',
     ter_base='0,25 % p.a.',
     ret='10,41 % p.a.',
-    desc='Dieser hypothetische Fonds folgt der Entwicklung des MSCI World. '
-         'Zusätzlich fließt 1 % des investierten Kapitals in den Erwerb '
-         'von CO₂-Zertifikaten. Durch diese Zertifikate wird an anderer '
-         'Stelle CO₂-Ausstoß kompensiert – bei 250 EUR monatlichem '
-         'Investment werden so ca. 100 kg CO₂ pro Jahr eingespart.',
+    desc='Dieser Fonds folgt der Entwicklung des MSCI World. '
+         'Zusätzlich wird ein Teil des investierten Kapitals in den Erwerb '
+         'von CO₂-Zertifikaten verwendet. Dadurch wird an anderer '
+         'Stelle CO₂-Ausstoß kompensiert – bei 250 EUR monatlich '
+         'werden so ca. 100 kg CO₂ pro Jahr eingespart.',
 )
 
 
@@ -572,7 +572,7 @@ ATTITUDE_FIELDS = [
 
 ATTITUDE_ITEM_DEFS = {
     'att_consensus_price': 'Der aktuelle Kurs einer Aktie spiegelt wider, was viele andere Anlegerinnen und Anleger zusammen über das Unternehmen denken.',
-    'att_beat_consensus': 'Wer eine einzelne Aktie kauft, wettet im Grunde darauf, das Unternehmen besser einzuschätzen als alle anderen Marktteilnehmer zusammen.',
+    'att_beat_consensus': 'Wer eine einzelne Aktie kauft, wettet im Grunde darauf, dass er oder sie das Unternehmen besser einschätzen kann als alle anderen Marktteilnehmer zusammen.',
     'att_diversification': 'Wer in einen breiten Aktienindex investiert, bekommt automatisch die durchschnittliche Entwicklung vieler erfolgreicher Unternehmen — das ist genau das, was man als Privatanleger erreichen möchte.',
     'att_market_premium': 'Über lange Zeiträume ist die Rendite des Gesamtmarkts (z. B. MSCI World) historisch deutlich positiv. Diesen Ertrag erhält man am einfachsten über einen Indexfonds.',
     'att_costs': 'Auf lange Sicht hängt die Rendite einer Aktienanlage stärker von den laufenden Kosten ab als von der Auswahl einzelner Aktien.',
@@ -653,7 +653,6 @@ page_sequence = [
     Welcome,
     DemographicsIntro,
     MarketIntro,
-    TransitionText,
     MarketQuiz,
     ImpactScenario,
     ImpactEstimate,

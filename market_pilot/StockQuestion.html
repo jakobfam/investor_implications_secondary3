@@ -1,7 +1,28 @@
 {{ block title }}
     Fragen zu Aktienmärkten
 {{ endblock }}
+
+{{ block styles }}
+<style>
+    /* Align oTree page title with content container */
+    .otree-title, ._otree_content_area > h2:first-child {
+        max-width: 760px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .stock-container {
+        max-width: 760px;
+        margin: 0 auto;
+    }
+    .stock-container .form-group {
+        margin-bottom: 20px;
+    }
+</style>
+{{ endblock }}
+
 {{ block content }}
+<div class="stock-container">
     {{ formfields }}
     {{ next_button }}
+</div>
 {{ endblock }}
